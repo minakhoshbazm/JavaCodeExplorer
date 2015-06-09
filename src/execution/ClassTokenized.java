@@ -1,3 +1,4 @@
+package execution;
 /**
  * Java files tokenizer
  * @author MWM
@@ -14,7 +15,7 @@ import java.lang.Object.*;
 import java.util.*;
 
 
-public class MethodTokenized 
+public class ClassTokenized 
 {
 	String name;
 	String body;
@@ -23,13 +24,15 @@ public class MethodTokenized
 	ArrayList<String> comments;
 	ArrayList<String> content;
 	
+	ArrayList<MethodTokenized> methods;
 	
-	public MethodTokenized()
+	public ClassTokenized()
 	{
-		
 		members = new ArrayList<String>();
 		comments = new ArrayList<String>();
-		content = new ArrayList<String>();		
+		content = new ArrayList<String>();
+		
+		methods = new ArrayList<MethodTokenized>();
 	}
 	
 	public void setMembers(List members)
@@ -62,12 +65,22 @@ public class MethodTokenized
 		
 	}
 	
-	public String getBody() {
-		return body;
+	public void printClassInfo()
+	{
+		System.out.println("\t *** Class Info ***");
+		System.out.println(" name : "+this.name);
+		System.out.println(" # of instructions : "+this.content.size());
+		System.out.println(" # of methods : "+this.methods.size());
+		System.out.println(" # of comments : "+this.comments.size());
 	}
 	
-	
+public List<MethodTokenized> getMethods() {
+	return methods;
+}
+
 public String getName() {
 	return name;
 }
+
+
 }
